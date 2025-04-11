@@ -5,7 +5,9 @@ project(kalitestGuicmd VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-set(CMAKE_PREFIX_PATH "/home/kali/Qt/6.8.2/gcc_64/lib/cmake/Qt6")
+# set(CMAKE_PREFIX_PATH "/home/kali/Qt/6.8.2/gcc_64/lib/cmake/Qt6")
+set(CMAKE_PREFIX_PATH "C:/Qt/6.8.2/mingw_64/lib/cmake")
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
