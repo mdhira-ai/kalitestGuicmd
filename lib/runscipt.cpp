@@ -2,14 +2,14 @@
 
 void RunmyScript::nmapscript(
     QProcess *process,
-    QLineEdit *linedit,
+    QLineEdit *programpath,
     QPushButton *runbutton,
     QPushButton *stopbutton,
     QTextEdit *output,
     QWidget *parent)
 {
 
-    auto scriptpath = linedit->text();
+    auto scriptpath = programpath->text();
     if (scriptpath.isEmpty())
     {
         QMessageBox::warning(parent, "error", "Please specify a script to run");
@@ -21,6 +21,7 @@ void RunmyScript::nmapscript(
     try
     {
         process->start("ping", QStringList() << "google.com");
+        // process->start("/usr/bin/nmap",);
         output->append("process started...");
     }
     catch (const std::exception &e)

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>824</width>
-    <height>612</height>
+    <width>1000</width>
+    <height>609</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,9 +20,158 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Nmap</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>180</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>Command selection</string>
+          </property>
+          <widget class="QWidget" name="gridLayoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>40</y>
+             <width>961</width>
+             <height>113</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0" columnstretch="0,2" columnminimumwidth="0,0">
+            <property name="sizeConstraint">
+             <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+            </property>
+            <item row="2" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QLabel" name="label_3">
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Command</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_3_command"/>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="0">
+             <widget class="QComboBox" name="comboBox_2"/>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLineEdit" name="targetip">
+              <property name="placeholderText">
+               <string>TARGET IP</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QLineEdit" name="lineEdit_4_filepath">
+                <property name="placeholderText">
+                 <string>Report Save path</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_4_savebtn">
+                <property name="text">
+                 <string>Browse...</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="1">
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>intense:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_4_intense"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_6">
+          <property name="title">
+           <string>Output</string>
+          </property>
+          <widget class="QTextEdit" name="textEdit_2_nmapoutput">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>40</y>
+             <width>961</width>
+             <height>211</height>
+            </rect>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QWidget" name="horizontalLayoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>280</y>
+             <width>931</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QPushButton" name="attackbtn">
+              <property name="text">
+               <string>Attack</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_5_nmapstop">
+              <property name="text">
+               <string>Stop</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>Script Execution</string>
+        <string>test</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
@@ -140,11 +289,6 @@
          </layout>
         </item>
        </layout>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Command Presets</string>
-       </attribute>
       </widget>
      </widget>
     </item>

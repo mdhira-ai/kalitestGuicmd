@@ -14,7 +14,7 @@ class RunmyScript
 public:
     static void nmapscript(
         QProcess *process,
-        QLineEdit *linedit,
+        QLineEdit *programpath,
         QPushButton *runbutton,
         QPushButton *stopbutton,
         QTextEdit *output,
