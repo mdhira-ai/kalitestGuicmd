@@ -8,17 +8,25 @@
 #include <QTextEdit>
 #include <QWidget>
 #include <QMessageBox>
+#include <QComboBox>
+
 
 class RunmyScript
 {
 public:
     static void nmapscript(
+        QWidget *parent,
         QProcess *process,
-        QLineEdit *programpath,
-        QPushButton *runbutton,
-        QPushButton *stopbutton,
-        QTextEdit *output,
-        QWidget *parent);
+        QPushButton *attackbtn,
+        QPushButton *pushButton_5_nmapstop,
+        QTextEdit *nmapoutput,
+        QComboBox *selectcommand,
+        QComboBox *subselectcommand,
+        QLineEdit *targetipbox,
+        QComboBox *intesecmd,
+        QLineEdit *lineEdit_4_filepath
+    
+    );
 
     static void nmapstop(
         QProcess *process,

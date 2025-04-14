@@ -3,6 +3,8 @@
         "string": "cpp",
         "optional": "cpp",
         "variant": "cpp",
-        "qfiledialog": "cpp"
+        "qfiledialog": "cpp",
+        "qcombobox": "cpp",
+        "qstring": "cpp"
     }
 }

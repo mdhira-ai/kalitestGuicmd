@@ -1,36 +1,72 @@
 #include "runscript.h"
 
 void RunmyScript::nmapscript(
+    QWidget *parent,
     QProcess *process,
-    QLineEdit *programpath,
-    QPushButton *runbutton,
-    QPushButton *stopbutton,
-    QTextEdit *output,
-    QWidget *parent)
+    QPushButton *attackbtn,
+    QPushButton *pushButton_5_nmapstop,
+    QTextEdit *nmapoutput,
+    QComboBox *selectcommand,
+    QComboBox *subselectcommand,
+    QLineEdit *targetipbox,
+    QComboBox *intesecmd,
+    QLineEdit *lineEdit_4_filepath
+
+)
 {
 
-    auto scriptpath = programpath->text();
-    if (scriptpath.isEmpty())
-    {
-        QMessageBox::warning(parent, "error", "Please specify a script to run");
-        return;
-    }
+    nmapoutput->clear(); //this is for output 
 
-    output->clear();
 
-    try
-    {
-        process->start("ping", QStringList() << "google.com");
-        // process->start("/usr/bin/nmap",);
-        output->append("process started...");
-    }
-    catch (const std::exception &e)
-    {
-        output->append(QString(e.what()));
-    }
+    attackbtn->setEnabled(false);
+    pushButton_5_nmapstop->setEnabled(true);
 
-    runbutton->setEnabled(false);
-    stopbutton->setEnabled(true);
+    auto intence = intesecmd->currentText();
+    auto cmdargs = subselectcommand->currentText();
+    auto fp = lineEdit_4_filepath->text();
+
+    if (!targetipbox->text().isEmpty())
+    {
+
+        QStringList arguments;
+
+        //TODO: need to make save ext .xml .txt
+
+        // Check if the intensity command is set to "Default"
+        if (intence.split(" ").first() == "Default")
+        {
+            // If a file path is provided, add output file arguments
+            if (!fp.isEmpty())
+            {
+            arguments << "-oX" << fp + "/outnmap.xml";
+            }
+            // Otherwise, add the target IP and selected command arguments
+            arguments << targetipbox->text()
+                  << cmdargs.split(" ").first();
+        }
+        else
+        {
+            // If a file path is provided, add output file arguments
+            if (!fp.isEmpty())
+            {
+            arguments << "-oX" << fp + "/outnmap.xml";
+            }
+            // Otherwise, add the target IP, intensity, and selected command arguments
+            arguments << targetipbox->text()
+                  << intence.split(" ").first()
+                  << cmdargs.split(" ").first();
+        }
+
+        // Start the process with the constructed arguments
+        if (process)
+        {
+            process->start("/usr/bin/nmap", arguments);
+        }
+    }
+    else
+    {
+        QMessageBox::warning(parent, "Error", "Target IP is missing. Please enter a valid target IP address.");
+    }
 }
 
 void RunmyScript::nmapstop(

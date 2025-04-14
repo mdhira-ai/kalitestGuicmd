@@ -22,11 +22,8 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_3_clicked();
 
-    void on_comboBox_currentTextChanged(const QString &arg1);
 
-    void on_pushButton_2_clicked();
 
     void on_attackbtn_clicked();
     void on_pushButton_5_nmapstop_clicked();
@@ -37,10 +34,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    QTextEdit *mytextoutput;
     QTextEdit *nmapoutput;
     QProcess *process;
-    QLineEdit *scriptpath;
     QLineEdit *targetipbox;
 
     QComboBox *intesecmd;
