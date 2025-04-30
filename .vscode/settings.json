@@ -5,6 +5,8 @@
         "variant": "cpp",
         "qfiledialog": "cpp",
         "qcombobox": "cpp",
-        "qstring": "cpp"
+        "qstring": "cpp",
+        "qhostaddress": "cpp",
+        "qguiapplication": "cpp"
     }
 }

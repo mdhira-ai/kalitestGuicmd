@@ -4,6 +4,10 @@
 #include "runscript.h"
 #include <QFileDialog>
 #include <cmd.h>
+#include <QHostAddress>
+#include <QNetworkInterface>
+#include <QClipboard>
+#include <QGuiApplication>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -13,6 +17,57 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pushButton_5_nmapstop->setEnabled(false);
 
     nmapoutput = ui->textEdit_2_nmapoutput;
+
+
+    // getting local ip
+    QHostAddress localIP;
+    const QHostAddress &localhost = QHostAddress(QHostAddress::LocalHost);
+    for(const QHostAddress &address: QNetworkInterface::allAddresses()) {
+        if(address.protocol() == QAbstractSocket::IPv4Protocol && address != localhost) {
+            localIP = address;
+            break;
+        }
+    }
+    ui->label_ip->setText(localIP.toString());
+
+
+    // getting router ip
+    QString routerIP;
+    QProcess routerProcess;
+    #ifdef Q_OS_WIN
+        routerProcess.start("ipconfig");
+    #else
+        routerProcess.start("ip", QStringList() << "route" << "show" << "default");
+    #endif
+    routerProcess.waitForFinished();
+    QString output = routerProcess.readAllStandardOutput();
+    QStringList lines = output.split('\n');
+    for (const QString& line : lines) {
+        if (line.contains("default")) {
+            QStringList parts = line.simplified().split(' ');
+            if (parts.size() > 2) {
+                routerIP = parts[2];
+                break;
+            }
+        }
+    }
+    ui->label_router->setText(routerIP);
+
+    connect(ui->label_router, &QLabel::linkActivated,this,[this](){
+        QClipboard *clipbp = QGuiApplication::clipboard();
+        clipbp->setText(ui->label_router->text());
+    });
+    ui->label_router->setTextInteractionFlags(Qt::TextSelectableByMouse);
+
+
+    // copy local ip to clipboard
+    connect(ui->label_ip, &QLabel::linkActivated, this, [this]() {
+        QClipboard *clipboard = QGuiApplication::clipboard();
+        clipboard->setText(ui->label_ip->text());
+    });
+    ui->label_ip->setTextInteractionFlags(Qt::TextSelectableByMouse);
+
+
 
     intesecmd = ui->comboBox_4_intense;
     intesecmd->addItems({"Default",
